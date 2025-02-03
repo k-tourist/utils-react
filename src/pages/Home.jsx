@@ -1,7 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import AnimatedCounter from '../components/common/AnimatedCounter';
+
+// Import all avatars
+import avatar1 from '../assets/avatars/avatar1.png';
+import avatar2 from '../assets/avatars/avatar2.png';
+import avatar3 from '../assets/avatars/avatar3.png';
+import avatar4 from '../assets/avatars/avatar4.png';
+import avatar5 from '../assets/avatars/avatar5.png';
 
 const Home = () => {
+  const avatars = [avatar1, avatar2, avatar3, avatar4, avatar5];
+
   return (
     <div className="space-y-16">
       {/* Hero Section */}
@@ -12,6 +22,30 @@ const Home = () => {
         <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
           Your comprehensive utility platform. Experience the next generation of digital solutions.
         </p>
+
+        {/* User Stats Section */}
+        <div className="flex flex-col items-center space-y-4">
+          <div className="flex -space-x-4">
+            {avatars.map((avatar, index) => (
+              <img
+                key={index}
+                src={avatar}
+                alt={`User ${index + 1}`}
+                className="w-12 h-12 rounded-full border-2 border-white dark:border-gray-800 object-cover transition-transform hover:scale-110 hover:z-10"
+              />
+            ))}
+            <div className="w-12 h-12 rounded-full border-2 border-white dark:border-gray-800 bg-primary dark:bg-primary-600 text-white flex items-center justify-center text-sm font-medium">
+              +2k
+            </div>
+          </div>
+          <div className="text-2xl font-bold text-gray-800 dark:text-white">
+            <AnimatedCounter end={153200} /> Users
+          </div>
+          <p className="text-gray-600 dark:text-gray-400">
+            Join our growing community of users worldwide
+          </p>
+        </div>
+
         <div className="flex justify-center gap-4">
           <Link 
             to="/login"
